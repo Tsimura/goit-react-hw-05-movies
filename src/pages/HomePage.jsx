@@ -1,12 +1,13 @@
-import moviesAPI from '../services/getFilms';
+import moviesListAPI from '../services/getTrendingFilms';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PageHeading from 'components/PageHeading/PageHeading';
 
 export default function HomePage() {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
-    moviesAPI.getFilms().then(res => {
+    moviesListAPI.getTrendingFilms().then(res => {
       const results = res.results;
       console.log(results);
       setMovies(results);
@@ -16,10 +17,16 @@ export default function HomePage() {
   return (
     <>
       <PageHeading text="Trending today" />
-      <ul>
-        {movies &&
-          movies.map(movie => <li key={movie.id}>{movie.original_title}</li>)}
-      </ul>
+
+      {movies &&
+        movies.map(movie => (
+          <li key={movie.id}>
+            <Link to={`/movies/${movie.id}`}>{movie.original_title}</Link>
+          </li>
+        ))}
     </>
   );
 }
+
+// useRouteMatch;
+// https://youtu.be/IY_btZ2pYpw?t=2709   можливі помиллки

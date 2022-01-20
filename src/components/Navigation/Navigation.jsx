@@ -11,7 +11,7 @@ const Navigation = () => (
     </NavLink>
 
     <NavLink
-      to="/movies"
+      to="/movies/:id"
       className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
     >
       Movies
