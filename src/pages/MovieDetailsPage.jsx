@@ -1,35 +1,58 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import currentMovieAPI from 'services/getCurrentFilm';
-import PageHeading from 'components/PageHeading/PageHeading';
+import { useParams, Outlet, Link, useLocation } from 'react-router-dom';
+import * as moviesApi from 'services/movies-api';
+// import PageHeading from 'components/PageHeading/PageHeading';
 export default function MovieDetailsPage() {
-  let { movieId } = useParams();
+  // const urlMain = useLocation();
+  // console.log('urlMain:', urlMain);
+  const { movieId } = useParams();
   const [currentMovie, setCurrentMovie] = useState(null);
+
   useEffect(() => {
-    currentMovieAPI.getCurrentFilm(movieId).then(resp => {
-      console.log(resp);
+    moviesApi.getCurrentFilm(movieId).then(resp => {
+      // console.log(resp);
       setCurrentMovie(resp);
     });
   }, [movieId]);
-  // { original_title, poster_path, vote_average, overview, genre }
 
   return (
     <>
-      <PageHeading text={`Movie: ${movieId}`} />
+      {/* <PageHeading text={`Movie: ${movieId}`} /> */}
       {currentMovie && (
         <>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
-            alt={currentMovie.original_title}
-          />
-          <h2>{currentMovie.original_title}</h2>
-          <p>{currentMovie.vote_average}</p>
-          <p>Overview: {currentMovie.overview}</p>
+          <button type="button">
+            <Link to="/">Back</Link>
+          </button>
+
+          <div>
+            <img
+              src={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
+              alt={currentMovie.original_title}
+              width={120}
+            />
+            <h2>{currentMovie.original_title}</h2>
+            <p>User Score: {currentMovie.popularity}</p>
+            <p>Overview: {currentMovie.overview}</p>
+            <ul>
+              Ganres:
+              {currentMovie.genres.map(genre => (
+                <li key={genre.id}>{genre.name}</li>
+              ))}
+            </ul>
+          </div>
           <ul>
-            Ganres:
-            {currentMovie.genres.map(genre => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
+            <hr />
+            <h2>Additional Information</h2>
+
+            <ul>
+              <li>
+                <Link to="cast">Cast</Link>
+              </li>
+              <li>
+                <Link to="reviews">Reviews</Link>
+              </li>
+            </ul>
+            <Outlet />
           </ul>
         </>
       )}
