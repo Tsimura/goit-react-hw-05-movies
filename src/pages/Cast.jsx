@@ -1,5 +1,5 @@
-import { Link, useParams, useLocation, Outlet } from 'react-router-dom';
-import defaultImgActor from './defaultImgActor.png';
+import { useParams } from 'react-router-dom';
+import defaultImgActor from '../images/defaultImgActor.png';
 import { useState, useEffect } from 'react';
 import * as moviesApi from 'services/movies-api';
 
@@ -19,9 +19,8 @@ export default function Cast() {
     <>
       <ul>
         {credits &&
-          credits.map(({ id, name, profile_path }) => (
+          credits.map(({ id, name, profile_path, character }) => (
             <li key={id}>
-              {name}
               {profile_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w500${profile_path}`}
@@ -31,6 +30,8 @@ export default function Cast() {
               ) : (
                 <img src={defaultImgActor} alt="actor" width={120} />
               )}
+              <p>Name:{name} </p>
+              <p>Character: {character}</p>
             </li>
           ))}
       </ul>

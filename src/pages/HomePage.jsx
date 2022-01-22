@@ -33,6 +33,3 @@ export default function HomePage() {
     </>
   );
 }
-
-// useRouteMatch;
-// https://youtu.be/IY_btZ2pYpw?t=2709   можливі помиллки

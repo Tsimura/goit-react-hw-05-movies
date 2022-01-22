@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useParams, Outlet, Link, useLocation } from 'react-router-dom';
+import { useParams, Outlet, Link } from 'react-router-dom';
 import * as moviesApi from 'services/movies-api';
+import outOfPoster from '../images/outOfPoster.jpg';
 // import PageHeading from 'components/PageHeading/PageHeading';
 export default function MovieDetailsPage() {
   // const urlMain = useLocation();
@@ -25,11 +26,20 @@ export default function MovieDetailsPage() {
           </button>
 
           <div>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
-              alt={currentMovie.original_title}
-              width={120}
-            />
+            {currentMovie.poster_path ? (
+              <img
+                src={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
+                alt={currentMovie.original_title}
+                width={120}
+              />
+            ) : (
+              <img
+                src={outOfPoster}
+                alt={currentMovie.original_title}
+                width={120}
+              />
+            )}
+
             <h2>{currentMovie.original_title}</h2>
             <p>User Score: {currentMovie.popularity}</p>
             <p>Overview: {currentMovie.overview}</p>

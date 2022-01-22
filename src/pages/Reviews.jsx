@@ -1,4 +1,4 @@
-import { Link, useParams, useLocation, Outlet } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
 import * as moviesApi from 'services/movies-api';
@@ -17,15 +17,17 @@ export default function Reviews() {
   }, [idMovie]);
   return (
     <>
-      <h2>Reviews</h2>
-
       <ul>
         {reviews &&
-          reviews.map(({ id, author, content }) => (
-            <li key={id}>
-              {author}
-              <p>{content}</p>
-            </li>
+          (reviews.length > 0 ? (
+            reviews.map(({ id, author, content }) => (
+              <li key={id}>
+                {author}
+                <p>{content}</p>
+              </li>
+            ))
+          ) : (
+            <p>We don't have any reviews for this movie.</p>
           ))}
       </ul>
     </>
