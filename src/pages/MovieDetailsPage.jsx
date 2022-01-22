@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Outlet, Link } from 'react-router-dom';
+import { useParams, Outlet, Link, useNavigate } from 'react-router-dom';
 import * as moviesApi from 'services/movies-api';
 import outOfPoster from '../images/outOfPoster.jpg';
 // import PageHeading from 'components/PageHeading/PageHeading';
@@ -8,6 +8,7 @@ export default function MovieDetailsPage() {
   // console.log('urlMain:', urlMain);
   const { movieId } = useParams();
   const [currentMovie, setCurrentMovie] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     moviesApi.getCurrentFilm(movieId).then(resp => {
@@ -21,9 +22,10 @@ export default function MovieDetailsPage() {
       {/* <PageHeading text={`Movie: ${movieId}`} /> */}
       {currentMovie && (
         <>
-          <button type="button">
+          <button onClick={() => navigate(-1)}>Go back</button>
+          {/* <button type="button">
             <Link to="/">Back</Link>
-          </button>
+          </button> */}
 
           <div>
             {currentMovie.poster_path ? (
