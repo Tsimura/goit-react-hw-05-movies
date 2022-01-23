@@ -69,19 +69,22 @@ export default function MoviesPage() {
     <>
       <PageHeading text="This is MoviesPage" />
       <Searchbar onSubmit={handleFormSubmit} />
-      {moviesArr &&
-        moviesArr.map(({ id, original_title, poster_path }) => (
-          <li key={id}>
-            <Link to={`/movies/${id}`}>
-              {original_title}
-              {/* <img
+      <ul>
+        {moviesArr &&
+          moviesArr.map(({ id, original_title, poster_path }) => (
+            <li key={id}>
+              <Link to={`/movies/${id}`}>
+                {original_title}
+                {/* <img
                 src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                 alt={original_title}
                 width={120}
               /> */}
-            </Link>
-          </li>
-        ))}
+              </Link>
+            </li>
+          ))}
+      </ul>
+
       {error && <h2>Sorry, something went wrong: {error.message}</h2>}
       {loading && (
         <MyLoader style={{ marginRight: 'auto', marginLeft: 'auto' }} />

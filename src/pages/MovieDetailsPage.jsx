@@ -71,3 +71,5 @@ export default function MovieDetailsPage() {
     </>
   );
 }
+
+// resp - прибрати зайве сміття!
