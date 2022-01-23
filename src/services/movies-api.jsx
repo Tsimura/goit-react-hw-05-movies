@@ -9,9 +9,9 @@ async function fetchWithErrorHandlling(url = '', config = {}) {
     : Promise.reject(new Error('404 Page not found :('));
 }
 
-export function getTrendingFilms() {
+export function getTrendingFilms(currentPage) {
   return fetchWithErrorHandlling(
-    `${BASE_URL}/trending/movie/day?${API_KEY}&page=1`,
+    `${BASE_URL}/trending/movie/day?${API_KEY}&page=${currentPage}`,
   );
 }
 
@@ -31,8 +31,8 @@ export function getReviews(movieId) {
   );
 }
 
-export function getSearchFilm(value) {
+export function getSearchFilm(value, currentPage) {
   return fetchWithErrorHandlling(
-    `${BASE_URL}/search/movie?${API_KEY}&language=en-US&query=${value}&page=1&include_adult=false`,
+    `${BASE_URL}/search/movie?${API_KEY}&language=en-US&query=${value}&page=${currentPage}&include_adult=false`,
   );
 }
