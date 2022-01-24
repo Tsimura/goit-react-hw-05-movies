@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Outlet, Link, useNavigate } from 'react-router-dom';
 import * as moviesApi from 'services/movies-api';
-import outOfPoster from '../images/outOfPoster.jpg';
+import outOfPoster from '../../images/outOfPoster.jpg';
 // import PageHeading from 'components/PageHeading/PageHeading';
 export default function MovieDetailsPage() {
   // const urlMain = useLocation();

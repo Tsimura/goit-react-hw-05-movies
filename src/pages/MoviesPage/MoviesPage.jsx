@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import * as moviesApi from 'services/movies-api';
 import PageHeading from 'components/PageHeading/PageHeading';
-import Searchbar from '../components/Searchbar/Searchbar';
+import Searchbar from '../../components/Searchbar/Searchbar';
 import MyLoader from 'components/Loader/Loader';
 import Button from 'components/LoadMoreBtn/LoadMoreBtn';
+import styles from '../MoviesPage/MoviesPage.module.css';
 export default function MoviesPage() {
   const [moviesArr, setMoviesArr] = useState([]);
   const [movieValue, setMovieValue] = useState('');
@@ -75,11 +76,11 @@ export default function MoviesPage() {
             <li key={id}>
               <Link to={`/movies/${id}`}>
                 {original_title}
-                {/* <img
-                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                alt={original_title}
-                width={120}
-              /> */}
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                  alt={original_title}
+                  width={120}
+                />
               </Link>
             </li>
           ))}

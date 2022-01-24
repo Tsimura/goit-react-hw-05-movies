@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import defaultImgActor from '../images/defaultImgActor.png';
+import defaultImgActor from '../../images/defaultImgActor.png';
 import { useState, useEffect } from 'react';
 import * as moviesApi from 'services/movies-api';
 

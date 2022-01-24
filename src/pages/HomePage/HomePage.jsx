@@ -4,6 +4,7 @@ import * as moviesApi from 'services/movies-api';
 import PageHeading from 'components/PageHeading/PageHeading';
 import MyLoader from 'components/Loader/Loader';
 import Button from 'components/LoadMoreBtn/LoadMoreBtn';
+import styles from './HomePage.module.css';
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
   const [currentPage, setСurrentPage] = useState(1);
@@ -37,11 +38,11 @@ export default function HomePage() {
             <li key={id}>
               <Link to={`/movies/${id}`}>
                 {original_title}
-                {/* <img
-                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                alt={original_title}
-                width={120}
-              /> */}
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                  alt={original_title}
+                  width={120}
+                />
               </Link>
             </li>
           ))}
