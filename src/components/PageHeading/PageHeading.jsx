@@ -1,3 +1,4 @@
+import styles from '../PageHeading/PageHeading.module.css';
 export default function PageHeading({ text }) {
-  return <h1>{text}</h1>;
+  return <h2 className={styles.pageHeadingTitle}>{text}</h2>;
 }

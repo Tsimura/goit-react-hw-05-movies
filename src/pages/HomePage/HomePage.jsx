@@ -32,16 +32,17 @@ export default function HomePage() {
   return (
     <>
       <PageHeading text="Trending today" />
-      <ul>
+      <ul className={styles.homePageList}>
         {movies &&
           movies.map(({ id, original_title, poster_path }) => (
-            <li key={id}>
+            <li key={id} className={styles.homePageItem}>
               <Link to={`/movies/${id}`}>
-                {original_title}
+                <h3 className={styles.homePageItemTitle}>{original_title}</h3>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                   alt={original_title}
                   width={120}
+                  className={styles.homePageImg}
                 />
               </Link>
             </li>

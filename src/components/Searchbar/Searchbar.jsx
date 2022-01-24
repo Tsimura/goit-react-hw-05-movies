@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from '../Searchbar/Searchbar.module.css';
 // import PageHeading from 'components/PageHeading/PageHeading';
 
 export default function Searchbar({ onSubmit }) {
@@ -20,22 +21,22 @@ export default function Searchbar({ onSubmit }) {
 
   return (
     <>
-      <header>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="movieValue"
-            value={movieValue}
-            onChange={handleNameChange}
-            autoComplete="off"
-            autoFocus
-            placeholder="Search"
-          />
-          <button type="submit">
-            <span>Search</span>
-          </button>
-        </form>
-      </header>
+      <form onSubmit={handleSubmit} className={styles.formWrapper}>
+        {/* <button type="submit" className={styles.searchBtn}>
+          <span className={styles.span}>Search</span>
+        </button> */}
+
+        <input
+          type="text"
+          name="movieValue"
+          value={movieValue}
+          onChange={handleNameChange}
+          autoComplete="off"
+          autoFocus
+          placeholder="Search"
+          className={styles.searchInput}
+        />
+      </form>
     </>
   );
 }
