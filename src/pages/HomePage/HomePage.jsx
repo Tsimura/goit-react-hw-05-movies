@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import * as moviesApi from 'services/movies-api';
 import PageHeading from 'components/PageHeading/PageHeading';
+import MovieList from 'components/MovieList/MovieList';
 import MyLoader from 'components/Loader/Loader';
 import Button from 'components/LoadMoreBtn/LoadMoreBtn';
-import styles from './HomePage.module.css';
+import { addBackToTop } from 'vanilla-back-to-top';
+// import styles from './HomePage.module.css';
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
   const [currentPage, setСurrentPage] = useState(1);
@@ -24,6 +25,17 @@ export default function HomePage() {
       .finally(() => setLoading(false));
   }, [currentPage]);
 
+  useEffect(() => {
+    addBackToTop({
+      diameter: 50,
+      backgroundColor: 'rgb(14, 21, 56)',
+      textColor: '#aaaaaa',
+      innerHTML:
+        '<svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>',
+      scrollDuration: 1000,
+    });
+  }, []);
+
   const onLoadMore = () => {
     setLoading(true);
     setСurrentPage(prevPage => prevPage + 1);
@@ -32,22 +44,8 @@ export default function HomePage() {
   return (
     <>
       <PageHeading text="Trending today" />
-      <ul className={styles.homePageList}>
-        {movies &&
-          movies.map(({ id, original_title, poster_path }) => (
-            <li key={id} className={styles.homePageItem}>
-              <Link to={`/movies/${id}`}>
-                <h3 className={styles.homePageItemTitle}>{original_title}</h3>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                  alt={original_title}
-                  width={120}
-                  className={styles.homePageImg}
-                />
-              </Link>
-            </li>
-          ))}
-      </ul>
+
+      {movies.length > 0 && <MovieList movies={movies} />}
 
       {error && <h2>Sorry, something went wrong: {error.message}</h2>}
       {loading && (

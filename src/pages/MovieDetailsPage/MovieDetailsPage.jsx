@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Outlet, Link, useNavigate } from 'react-router-dom';
 import * as moviesApi from 'services/movies-api';
+import style from './MovieDetailsPage.module.css';
 import outOfPoster from '../../images/outOfPoster.jpg';
 // import PageHeading from 'components/PageHeading/PageHeading';
 export default function MovieDetailsPage() {
@@ -22,50 +23,71 @@ export default function MovieDetailsPage() {
       {/* <PageHeading text={`Movie: ${movieId}`} /> */}
       {currentMovie && (
         <>
-          <button onClick={() => navigate(-1)}>Go back</button>
-          {/* <button type="button">
+          <div className={style.currentMovieWrapper}>
+            <button className={style.goBackBtn} onClick={() => navigate(-1)}>
+              Go back
+            </button>
+            {/* <button type="button">
             <Link to="/">Back</Link>
           </button> */}
+            <div className={style.innerContainer}>
+              <>
+                {currentMovie.poster_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
+                    alt={currentMovie.original_title}
+                    width={120}
+                    className={style.currentMoviePoster}
+                  />
+                ) : (
+                  <img
+                    src={outOfPoster}
+                    alt={currentMovie.original_title}
+                    width={120}
+                    className={style.currentMoviePoster}
+                  />
+                )}
+              </>
 
-          <div>
-            {currentMovie.poster_path ? (
-              <img
-                src={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
-                alt={currentMovie.original_title}
-                width={120}
-              />
-            ) : (
-              <img
-                src={outOfPoster}
-                alt={currentMovie.original_title}
-                width={120}
-              />
-            )}
+              <div className={style.descriptionWrapper}>
+                <h2 className={style.currentMovieTitle}>
+                  {currentMovie.original_title}
+                </h2>
+                <p className={style.currentMovieRelease}>
+                  Release date: {currentMovie.release_date}
+                </p>
+                <p className={style.currentMovieOverview}>
+                  Overview: {currentMovie.overview}
+                </p>
+                <p className={style.currentMoviePopularity}>
+                  User Score: {currentMovie.popularity}
+                </p>
+                <ul className={style.currentMovieGenres}>
+                  Ganres:
+                  {currentMovie.genres.map(genre => (
+                    <li key={genre.id} className={style.currentMovieGenreItem}>
+                      {genre.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className={style.more}>
+              <h2 className={style.additionalInformationTitle}>
+                Additional Information
+              </h2>
 
-            <h2>{currentMovie.original_title}</h2>
-            <p>User Score: {currentMovie.popularity}</p>
-            <p>Overview: {currentMovie.overview}</p>
-            <ul>
-              Ganres:
-              {currentMovie.genres.map(genre => (
-                <li key={genre.id}>{genre.name}</li>
-              ))}
-            </ul>
+              <>
+                <span className={style.additionalInformationBtn}>
+                  <Link to="cast">Cast</Link>
+                </span>
+                <span className={style.additionalInformationBtn}>
+                  <Link to="reviews">Reviews</Link>
+                </span>
+              </>
+              <Outlet />
+            </div>
           </div>
-          <ul>
-            <hr />
-            <h2>Additional Information</h2>
-
-            <ul>
-              <li>
-                <Link to="cast">Cast</Link>
-              </li>
-              <li>
-                <Link to="reviews">Reviews</Link>
-              </li>
-            </ul>
-            <Outlet />
-          </ul>
         </>
       )}
     </>

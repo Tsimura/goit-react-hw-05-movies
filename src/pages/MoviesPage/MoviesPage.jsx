@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import * as moviesApi from 'services/movies-api';
-// import PageHeading from 'components/PageHeading/PageHeading';
+import MovieList from 'components/MovieList/MovieList';
 import Searchbar from '../../components/Searchbar/Searchbar';
 import MyLoader from 'components/Loader/Loader';
 import Button from 'components/LoadMoreBtn/LoadMoreBtn';
@@ -68,24 +68,9 @@ export default function MoviesPage() {
 
   return (
     <>
-      {/* <PageHeading text="This is MoviesPage" /> */}
       <Searchbar onSubmit={handleFormSubmit} />
-      <ul className={styles.moviesPageList}>
-        {moviesArr &&
-          moviesArr.map(({ id, original_title, poster_path }) => (
-            <li key={id} className={styles.moviesPageItem}>
-              <Link to={`/movies/${id}`}>
-                <h3 className={styles.moviesPageItemTitle}>{original_title}</h3>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                  alt={original_title}
-                  width={120}
-                  className={styles.moviesPageImg}
-                />
-              </Link>
-            </li>
-          ))}
-      </ul>
+
+      {moviesArr.length > 0 && <MovieList movies={moviesArr} />}
 
       {error && <h2>Sorry, something went wrong: {error.message}</h2>}
       {loading && (

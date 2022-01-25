@@ -1,0 +1,45 @@
+.movieItemTitle {
+  text-align: center;
+  font-size: 20px;
+  color: #aaaaaa;
+}
+.movieItemItem {
+  flex-basis: calc((100% - 150px) / 5);
+  background: #3d3d3d;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.movieItemItem:hover {
+  transform: scale(1.01);
+  animation: boxShadow 0.6s ease;
+  animation-iteration-count: infinite;
+}
+@keyframes boxShadow {
+  from {
+    box-shadow: 5px 5px 15px 5px #ff8080, -9px 5px 15px 5px #ffe488,
+      -7px -5px 15px 5px #8cff85, 12px -5px 15px 5px #80c7ff,
+      12px 10px 15px 7px #e488ff, -10px 10px 15px 7px #ff616b,
+      -10px -7px 27px 1px #8e5cff, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  }
+  50% {
+    box-shadow: 3px 3px 15px 5px #8e5cff, -7px 3px 15px 5px #80c7ff,
+      -5px -3px 15px 5px #ff616b, 10px -3px 15px 5px #ffe488,
+      10px 8px 15px 7px #e488ff, -8px 8px 15px 7px #8cff85,
+      -8px -5px 27px 1px #ff616b, 3px 3px 15px 5px rgba(0, 0, 0, 0);
+  }
+  to {
+    box-shadow: 5px 5px 15px 5px #ff8080, -9px 5px 15px 5px #ffe488,
+      -7px -5px 15px 5px #8cff85, 12px -5px 15px 5px #80c7ff,
+      12px 10px 15px 7px #e488ff, -10px 10px 15px 7px #ff616b,
+      -10px -7px 27px 1px #8e5cff, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  }
+}
+.movieItemImg {
+  width: 100%;
+}
