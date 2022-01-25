@@ -3,28 +3,22 @@ import { useParams, Outlet, Link, useNavigate } from 'react-router-dom';
 import * as moviesApi from 'services/movies-api';
 import style from './MovieDetailsPage.module.css';
 import outOfPoster from '../../images/outOfPoster.jpg';
-// import PageHeading from 'components/PageHeading/PageHeading';
 export default function MovieDetailsPage() {
-  // const urlMain = useLocation();
-  // console.log('urlMain:', urlMain);
   const { movieId } = useParams();
   const [currentMovie, setCurrentMovie] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
   useEffect(() => {
     moviesApi
       .getCurrentFilm(movieId)
-      .then(resp => {
-        // console.log(resp);
-        setCurrentMovie(resp);
-      })
-      .catch(error => setError(error));
+      .then(response => setCurrentMovie(response))
+      .catch(error => {
+        console.log('error:', error);
+        setError(error);
+      });
   }, [movieId]);
-
   return (
     <>
-      {/* <PageHeading text={`Movie: ${movieId}`} /> */}
       {currentMovie && (
         <>
           <div className={style.currentMovieWrapper}>
@@ -52,7 +46,6 @@ export default function MovieDetailsPage() {
                   />
                 )}
               </>
-
               <div className={style.descriptionWrapper}>
                 <h2 className={style.currentMovieTitle}>
                   {currentMovie.original_title}
@@ -80,7 +73,6 @@ export default function MovieDetailsPage() {
               <h2 className={style.additionalInformationTitle}>
                 Additional Information
               </h2>
-
               <>
                 <span className={style.additionalInformationBtn}>
                   <Link to="cast">Cast</Link>
@@ -97,5 +89,3 @@ export default function MovieDetailsPage() {
     </>
   );
 }
-
-// resp - прибрати зайве сміття!

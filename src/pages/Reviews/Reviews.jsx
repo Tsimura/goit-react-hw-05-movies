@@ -5,17 +5,12 @@ import * as moviesApi from 'services/movies-api';
 export default function Reviews() {
   const currentMovieId = useParams();
   const idMovie = Number(currentMovieId.movieId);
-  //   console.log(idMovie);
   const [reviews, setReviews] = useState(null);
   const [error, setError] = useState(null);
   useEffect(() => {
     moviesApi
       .getReviews(idMovie)
-      .then(resp => {
-        console.log(resp);
-        console.log(resp.results);
-        setReviews(resp.results);
-      })
+      .then(resp => setReviews(resp.results))
       .catch(error => setError(error));
   }, [idMovie]);
   return (

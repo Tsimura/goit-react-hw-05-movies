@@ -3,22 +3,19 @@ import defaultImgActor from '../../images/defaultImgActor.png';
 import { useState, useEffect } from 'react';
 import * as moviesApi from 'services/movies-api';
 import style from './Cast.module.css';
-
 export default function Cast() {
   const currentMovieId = useParams();
   const idMovie = Number(currentMovieId.movieId);
-  console.log(idMovie);
   const [credits, setCredits] = useState(null);
   const [error, setError] = useState(null);
   useEffect(() => {
     moviesApi
       .getCurrentFilmCredits(idMovie)
-      .then(resp => {
-        console.log(resp);
-        console.log(resp.id);
-        setCredits(resp.cast);
-      })
-      .catch(error => setError(error));
+      .then(response => setCredits(response.cast))
+      .catch(error => {
+        console.log('error:', error);
+        setError(error);
+      });
   }, [idMovie]);
   return (
     <>

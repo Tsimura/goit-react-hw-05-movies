@@ -11,7 +11,6 @@ export default function HomePage() {
   const [currentPage, setСurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     setLoading(true);
     moviesApi

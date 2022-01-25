@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Container from './Container/Container';
 import AppBar from './AppBar/AppBar';
 import './App.css';
@@ -14,7 +15,6 @@ export default function App() {
   return (
     <Container>
       <AppBar />
-
       <Routes>
         <Route
           path="/"
@@ -66,7 +66,17 @@ export default function App() {
           }
         />
       </Routes>
-      {/* </Suspense> */}
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{
+          duration: 1000,
+          style: {
+            background: '#363636',
+            color: '#fff',
+          },
+        }}
+      />
     </Container>
   );
 }

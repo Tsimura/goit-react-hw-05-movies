@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import styles from '../Searchbar/Searchbar.module.css';
 // import PageHeading from 'components/PageHeading/PageHeading';
 
@@ -12,7 +13,7 @@ export default function Searchbar({ onSubmit }) {
   const handleSubmit = event => {
     event.preventDefault();
     if (movieValue.trim() === '') {
-      console.log('Enter the value of the request!');
+      toast.error('Enter the value of the request!');
       return;
     }
     onSubmit(movieValue);
