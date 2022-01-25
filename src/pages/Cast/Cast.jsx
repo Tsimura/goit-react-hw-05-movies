@@ -9,12 +9,16 @@ export default function Cast() {
   const idMovie = Number(currentMovieId.movieId);
   console.log(idMovie);
   const [credits, setCredits] = useState(null);
+  const [error, setError] = useState(null);
   useEffect(() => {
-    moviesApi.getCurrentFilmCredits(idMovie).then(resp => {
-      console.log(resp);
-      console.log(resp.id);
-      setCredits(resp.cast);
-    });
+    moviesApi
+      .getCurrentFilmCredits(idMovie)
+      .then(resp => {
+        console.log(resp);
+        console.log(resp.id);
+        setCredits(resp.cast);
+      })
+      .catch(error => setError(error));
   }, [idMovie]);
   return (
     <>

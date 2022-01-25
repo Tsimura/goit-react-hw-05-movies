@@ -1,5 +1,5 @@
 .reviews {
-  margin-top: 10px;
+  margin-top: 30px;
   color: #aaaaaa;
 }
 .review {
@@ -10,5 +10,8 @@
 }
 .author {
   font-size: 20px;
+  text-align: center;
+}
+.sorry {
   text-align: center;
 }

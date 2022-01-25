@@ -7,12 +7,16 @@ export default function Reviews() {
   const idMovie = Number(currentMovieId.movieId);
   //   console.log(idMovie);
   const [reviews, setReviews] = useState(null);
+  const [error, setError] = useState(null);
   useEffect(() => {
-    moviesApi.getReviews(idMovie).then(resp => {
-      console.log(resp);
-      console.log(resp.results);
-      setReviews(resp.results);
-    });
+    moviesApi
+      .getReviews(idMovie)
+      .then(resp => {
+        console.log(resp);
+        console.log(resp.results);
+        setReviews(resp.results);
+      })
+      .catch(error => setError(error));
   }, [idMovie]);
   return (
     <>
@@ -27,7 +31,9 @@ export default function Reviews() {
               </li>
             ))
           ) : (
-            <p>We don't have any reviews for this movie.</p>
+            <p className={style.sorry}>
+              We don't have any reviews for this movie.
+            </p>
           ))}
       </ul>
     </>

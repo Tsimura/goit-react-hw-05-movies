@@ -2,14 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Container from './Container/Container';
 import AppBar from './AppBar/AppBar';
-// import MyLoader from 'components/Loader/Loader';
-// import HomePage from 'pages/HomePage';
-// import MoviesPage from 'pages/MoviesPage';
-// import MovieDetailsPage from 'pages/MovieDetailsPage';
-// import Cast from '../pages/Cast';
-// import Reviews from '../pages/Reviews';
 import './App.css';
-
 const HomePage = lazy(() => import('pages/HomePage/HomePage.jsx'));
 const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage.jsx'));
 const MovieDetailsPage = lazy(() =>
@@ -17,13 +10,11 @@ const MovieDetailsPage = lazy(() =>
 );
 const Cast = lazy(() => import('../pages/Cast/Cast.jsx'));
 const Reviews = lazy(() => import('../pages/Reviews/Reviews.jsx'));
-
 export default function App() {
   return (
     <Container>
       <AppBar />
 
-      {/* <Suspense fallback={<></>}> */}
       <Routes>
         <Route
           path="/"

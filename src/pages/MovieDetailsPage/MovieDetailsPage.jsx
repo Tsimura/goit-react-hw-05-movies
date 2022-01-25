@@ -9,13 +9,17 @@ export default function MovieDetailsPage() {
   // console.log('urlMain:', urlMain);
   const { movieId } = useParams();
   const [currentMovie, setCurrentMovie] = useState(null);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    moviesApi.getCurrentFilm(movieId).then(resp => {
-      // console.log(resp);
-      setCurrentMovie(resp);
-    });
+    moviesApi
+      .getCurrentFilm(movieId)
+      .then(resp => {
+        // console.log(resp);
+        setCurrentMovie(resp);
+      })
+      .catch(error => setError(error));
   }, [movieId]);
 
   return (

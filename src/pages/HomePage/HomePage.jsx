@@ -5,7 +5,7 @@ import MovieList from 'components/MovieList/MovieList';
 import MyLoader from 'components/Loader/Loader';
 import Button from 'components/LoadMoreBtn/LoadMoreBtn';
 import { addBackToTop } from 'vanilla-back-to-top';
-// import styles from './HomePage.module.css';
+import styles from './HomePage.module.css';
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
   const [currentPage, setСurrentPage] = useState(1);
@@ -49,7 +49,9 @@ export default function HomePage() {
 
       {error && <h2>Sorry, something went wrong: {error.message}</h2>}
       {loading && (
-        <MyLoader style={{ marginRight: 'auto', marginLeft: 'auto' }} />
+        <div className={styles.loader}>
+          <MyLoader style={{ marginRight: 'auto', marginLeft: 'auto' }} />
+        </div>
       )}
       {!loading && movies.length > 0 && !error && (
         <Button onClick={onLoadMore} />

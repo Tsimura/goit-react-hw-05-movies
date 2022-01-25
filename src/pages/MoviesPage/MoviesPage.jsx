@@ -74,7 +74,9 @@ export default function MoviesPage() {
 
       {error && <h2>Sorry, something went wrong: {error.message}</h2>}
       {loading && (
-        <MyLoader style={{ marginRight: 'auto', marginLeft: 'auto' }} />
+        <div className={styles.loader}>
+          <MyLoader style={{ marginRight: 'auto', marginLeft: 'auto' }} />
+        </div>
       )}
       {!loading && moviesArr.length > 0 && !error && (
         <Button onClick={onLoadMore} />
