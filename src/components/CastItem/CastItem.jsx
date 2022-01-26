@@ -3,7 +3,7 @@ import defaultImgActor from '../../images/defaultImgActor.png';
 import styles from './CastItem.module.css';
 const CastItem = ({ id, name, profile, character }) => {
   return (
-    <li key={id} className={styles.castItem}>
+    <li className={styles.castItem}>
       {profile ? (
         <img
           src={`https://image.tmdb.org/t/p/w500${profile}`}
