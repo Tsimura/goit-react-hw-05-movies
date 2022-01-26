@@ -8,10 +8,8 @@ export default function MovieDetailsPage() {
   const [currentMovie, setCurrentMovie] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
   const setActive = ({ isActive }) =>
     isActive ? styles.activeLink : styles.link;
-
   useEffect(() => {
     moviesApi
       .getCurrentFilm(movieId)
@@ -81,7 +79,6 @@ export default function MovieDetailsPage() {
                 <NavLink to="cast" className={setActive}>
                   <span>Cast</span>
                 </NavLink>
-
                 <NavLink to="reviews" className={setActive}>
                   <span>Reviews</span>
                 </NavLink>

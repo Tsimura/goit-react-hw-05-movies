@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
-import defaultImgActor from '../../images/defaultImgActor.png';
 import { useState, useEffect } from 'react';
+import CastItem from '../../components/CastItem/CastItem';
 import * as moviesApi from 'services/movies-api';
-import style from './Cast.module.css';
+import styles from './Cast.module.css';
 export default function Cast() {
   const currentMovieId = useParams();
   const idMovie = Number(currentMovieId.movieId);
@@ -19,30 +19,16 @@ export default function Cast() {
   }, [idMovie]);
   return (
     <>
-      <ul className={style.cast}>
+      <ul className={styles.cast}>
         {credits.length > 0 ? (
           credits.map(({ id, name, profile_path, character }) => (
-            <li key={id} className={style.castItem}>
-              {profile_path ? (
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${profile_path}`}
-                  alt="actor"
-                  width={120}
-                  className={style.castImg}
-                />
-              ) : (
-                <img
-                  src={defaultImgActor}
-                  alt="actor"
-                  width={120}
-                  className={style.castImg}
-                />
-              )}
-              <div className={style.castDescription}>
-                <p className={style.castName}>Name: {name} </p>
-                <p>Character: {character}</p>
-              </div>
-            </li>
+            <CastItem
+              key={id}
+              id={id}
+              name={name}
+              profile={profile_path}
+              character={character}
+            />
           ))
         ) : (
           <p>Sorry...</p>

@@ -23,7 +23,6 @@ export default function HomePage() {
       .catch(error => setError(error))
       .finally(() => setLoading(false));
   }, [currentPage]);
-
   useEffect(() => {
     addBackToTop({
       diameter: 50,
@@ -34,18 +33,14 @@ export default function HomePage() {
       scrollDuration: 1000,
     });
   }, []);
-
   const onLoadMore = () => {
     setLoading(true);
     setСurrentPage(prevPage => prevPage + 1);
   };
-
   return (
     <>
       <PageHeading text="Trending today" />
-
       {movies.length > 0 && <MovieList movies={movies} />}
-
       {error && <h2>Sorry, something went wrong: {error.message}</h2>}
       {loading && (
         <div className={styles.loader}>
