@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Container from './Container/Container';
 import AppBar from './AppBar/AppBar';
-import './App.css';
 const HomePage = lazy(() => import('pages/HomePage/HomePage.jsx'));
 const MoviesPage = lazy(() => import('pages/MoviesPage/MoviesPage.jsx'));
 const MovieDetailsPage = lazy(() =>

@@ -6,7 +6,7 @@ import style from './Cast.module.css';
 export default function Cast() {
   const currentMovieId = useParams();
   const idMovie = Number(currentMovieId.movieId);
-  const [credits, setCredits] = useState(null);
+  const [credits, setCredits] = useState([]);
   const [error, setError] = useState(null);
   useEffect(() => {
     moviesApi
@@ -20,7 +20,7 @@ export default function Cast() {
   return (
     <>
       <ul className={style.cast}>
-        {credits &&
+        {credits.length > 0 ? (
           credits.map(({ id, name, profile_path, character }) => (
             <li key={id} className={style.castItem}>
               {profile_path ? (
@@ -43,7 +43,10 @@ export default function Cast() {
                 <p>Character: {character}</p>
               </div>
             </li>
-          ))}
+          ))
+        ) : (
+          <p>Sorry...</p>
+        )}
       </ul>
     </>
   );
