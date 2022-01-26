@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './ReviewsItem.module.css';
 const ReviewsItem = ({ id, author, content }) => {
   return (
@@ -6,5 +7,10 @@ const ReviewsItem = ({ id, author, content }) => {
       <p>{content}</p>
     </li>
   );
+};
+ReviewsItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  author: PropTypes.string,
+  content: PropTypes.string,
 };
 export default ReviewsItem;

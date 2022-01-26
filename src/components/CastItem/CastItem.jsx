@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import defaultImgActor from '../../images/defaultImgActor.png';
 import styles from './CastItem.module.css';
 const CastItem = ({ id, name, profile, character }) => {
@@ -24,5 +25,11 @@ const CastItem = ({ id, name, profile, character }) => {
       </div>
     </li>
   );
+};
+CastItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  profile: PropTypes.string,
+  character: PropTypes.string.isRequired,
 };
 export default CastItem;

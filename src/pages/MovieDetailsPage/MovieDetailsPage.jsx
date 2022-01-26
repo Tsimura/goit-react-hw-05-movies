@@ -15,7 +15,6 @@ export default function MovieDetailsPage() {
       .getCurrentFilm(movieId)
       .then(response => setCurrentMovie(response))
       .catch(error => {
-        console.log('error:', error);
         setError(error);
       });
   }, [movieId]);

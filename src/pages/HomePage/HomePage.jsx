@@ -17,7 +17,6 @@ export default function HomePage() {
       .getTrendingFilms(currentPage)
       .then(res => {
         const results = res.results;
-        console.log(results);
         setMovies(prevMovie => [...prevMovie, ...results]);
       })
       .catch(error => setError(error))

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import styles from '../Searchbar/Searchbar.module.css';
@@ -17,9 +18,6 @@ export default function Searchbar({ onSubmit }) {
   return (
     <>
       <form onSubmit={handleSubmit} className={styles.formWrapper}>
-        {/* <button type="submit" className={styles.searchBtn}>
-          <span className={styles.span}>Search</span>
-        </button> */}
         <input
           type="text"
           name="movieValue"
@@ -34,3 +32,4 @@ export default function Searchbar({ onSubmit }) {
     </>
   );
 }
+Searchbar.propTypes = { onSubmit: PropTypes.func.isRequired };

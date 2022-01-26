@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './MovieListItem.module.css';
 const MovieListItem = ({ id, title, poster }) => {
@@ -14,5 +15,10 @@ const MovieListItem = ({ id, title, poster }) => {
       </Link>
     </li>
   );
+};
+MovieListItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
 };
 export default MovieListItem;
