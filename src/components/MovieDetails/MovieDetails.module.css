@@ -1,0 +1,34 @@
+.innerContainer {
+  display: flex;
+  margin-bottom: 20px;
+}
+.currentMoviePoster {
+  height: 860px;
+  width: auto;
+  border-radius: 10px;
+}
+.descriptionWrapper {
+  font-size: 28px;
+  margin-left: 40px;
+  color: #aaaaaa;
+}
+.currentMovieTitle {
+  text-align: center;
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+.currentMovieRelease {
+  margin-bottom: 10px;
+}
+.currentMoviePopularity {
+  margin-bottom: 10px;
+}
+.currentMovieOverview {
+  margin-bottom: 10px;
+}
+.currentMovieGenres {
+  display: flex;
+}
+.currentMovieGenreItem {
+  margin-left: 10px;
+}

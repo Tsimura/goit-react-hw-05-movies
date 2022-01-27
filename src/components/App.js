@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useRef } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Container from './Container/Container';
@@ -10,7 +10,11 @@ const MovieDetailsPage = lazy(() =>
 );
 const Cast = lazy(() => import('../pages/Cast/Cast.jsx'));
 const Reviews = lazy(() => import('../pages/Reviews/Reviews.jsx'));
+
 export default function App() {
+  let ref = useRef(window.location.href);
+  console.log('MAINREF:', ref);
+
   return (
     <Container>
       <AppBar />
