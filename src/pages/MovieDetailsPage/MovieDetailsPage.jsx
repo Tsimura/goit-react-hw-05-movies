@@ -19,7 +19,6 @@ export default function MovieDetailsPage() {
   //   console.log('navigate:', navigate);
   //   console.log('location:', location);
   //   console.log('useParams:', movieId);
-  //   console.log('newRequesttttt:', newRequesttttt);
   //   console.log('location.pathname:', location.pathname);
   //   console.log('state:', window.history.state);
   //   console.log('loc:', loc);
