@@ -15,25 +15,12 @@ export default function MoviesPage() {
   const [error, setError] = useState(null);
   const navigation = useNavigate();
   const location = useLocation();
-  // =======================
-  // console.log('navigation:', navigation);
-  // const loc = window.location;
-  // const ref = useRef(window.location.href);
-  // console.log('ref:', ref);
-  // console.log('location:', location);
-  // console.log('locAll:', loc);
-  // =======================
   const handleFormSubmit = newRequest => {
     if (movieValue === newRequest) {
       return;
     }
     setMovieValue(newRequest);
     navigation({ ...location, search: `?query=${newRequest}` });
-    // =======================
-    // console.log('navigation:', navigation);
-    // let V = new URLSearchParams(location.search);
-    // console.log('location:', V);
-    // =======================
     setError(null);
     setMoviesArr([]);
   };
@@ -42,10 +29,7 @@ export default function MoviesPage() {
       return;
     }
     const newRequest = new URLSearchParams(location.search).get('query');
-    // =======================
-    // console.log('newRequest:', newRequest);
-    // console.log('location.pathname:', location.pathname);
-    // =======================
+
     setMovieValue(newRequest);
   }, [location.pathname, location.search]);
   useEffect(() => {
