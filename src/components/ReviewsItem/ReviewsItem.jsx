@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styles from './ReviewsItem.module.css';
-const ReviewsItem = ({ id, author, content }) => {
+const ReviewsItem = ({ author, content }) => {
   return (
     <li className={styles.review}>
       <h3 className={styles.author}> {author}</h3>

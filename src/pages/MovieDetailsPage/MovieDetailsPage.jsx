@@ -8,24 +8,12 @@ export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [currentMovie, setCurrentMovie] = useState(null);
   const [error, setError] = useState(null);
-  // =======================
+  const location = useLocation();
+  const currentLocation = useRef(location);
   const navigate = useNavigate();
-  // const location = useLocation();
-  // console.log('location:', location);
-  // const loc = window.location;
-  // const ref = useRef(window.location.href);
-
-  // const goBack = () => {
-  //   console.log('navigate:', navigate);
-  //   console.log('location:', location);
-  //   console.log('useParams:', movieId);
-  //   console.log('location.pathname:', location.pathname);
-  //   console.log('state:', window.history.state);
-  //   console.log('loc:', loc);
-  //   console.log('ref:', ref);
-  // };
-  // =======================
-
+  const goBack = () => {
+    navigate(currentLocation?.current?.state?.from ?? '/');
+  };
   useEffect(() => {
     moviesApi
       .getCurrentFilm(movieId)
@@ -39,12 +27,9 @@ export default function MovieDetailsPage() {
       {currentMovie && (
         <>
           <div className={styles.currentMovieWrapper}>
-            <button className={styles.goBackBtn} onClick={() => navigate(-1)}>
+            <button className={styles.goBackBtn} onClick={goBack}>
               Go back
             </button>
-            {/* <button type="button" onClick={() => goBack()}>
-              Back
-            </button> */}
             <MovieDetails
               poster={currentMovie.poster_path}
               title={currentMovie.original_title}
@@ -53,6 +38,7 @@ export default function MovieDetailsPage() {
               popularity={currentMovie.popularity}
               genres={currentMovie.genres}
             />
+            {error && <h2>Sorry, something went wrong: {error.message}</h2>}
             <NavInMovieDetailsPage />
           </div>
         </>

@@ -1,5 +1,5 @@
 import toast from 'react-hot-toast';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import * as moviesApi from 'services/movies-api';
 import MovieList from 'components/MovieList/MovieList';
@@ -29,7 +29,6 @@ export default function MoviesPage() {
       return;
     }
     const newRequest = new URLSearchParams(location.search).get('query');
-
     setMovieValue(newRequest);
   }, [location.pathname, location.search]);
   useEffect(() => {

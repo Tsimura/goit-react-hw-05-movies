@@ -8,14 +8,12 @@ const NavInMovieDetailsPage = () => {
       <h2 className={styles.additionalInformationTitle}>
         Additional Information
       </h2>
-
       <NavLink to="cast" className={setActive}>
         <span>Cast</span>
       </NavLink>
       <NavLink to="reviews" className={setActive}>
         <span>Reviews</span>
       </NavLink>
-
       <Outlet />
     </div>
   );

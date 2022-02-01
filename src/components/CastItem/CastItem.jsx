@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import defaultImgActor from '../../images/defaultImgActor.png';
 import styles from './CastItem.module.css';
-const CastItem = ({ id, name, profile, character }) => {
+const CastItem = ({ name, profile, character }) => {
   return (
     <li className={styles.castItem}>
       {profile ? (
