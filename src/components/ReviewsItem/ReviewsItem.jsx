@@ -9,7 +9,6 @@ const ReviewsItem = ({ author, content }) => {
   );
 };
 ReviewsItem.propTypes = {
-  id: PropTypes.string.isRequired,
   author: PropTypes.string,
   content: PropTypes.string,
 };

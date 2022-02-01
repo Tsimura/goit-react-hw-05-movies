@@ -27,7 +27,6 @@ const CastItem = ({ name, profile, character }) => {
   );
 };
 CastItem.propTypes = {
-  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   profile: PropTypes.string,
   character: PropTypes.string.isRequired,

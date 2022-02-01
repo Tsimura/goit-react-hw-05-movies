@@ -16,6 +16,7 @@ export default function Cast() {
   return (
     <>
       <CastList credits={credits} />
+      {error && <h2>Sorry, something went wrong: {error.message}</h2>}
     </>
   );
 }
