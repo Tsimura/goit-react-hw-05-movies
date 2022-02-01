@@ -127,3 +127,5 @@ yarn-debug.log*
 yarn-error.log*
 
 6
+# Local Netlify folder
+.netlify
